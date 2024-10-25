@@ -49,7 +49,7 @@ scene.add(observer)
 // GUI
 const { cameraConfig, effectConfig, performanceConfig, bloomConfig } = createConfigGUI(changePerformanceQuality, saveToScreenshot);
 const stats = createStatsGUI();
-document.body.appendChild(stats.dom);
+// document.body.appendChild(stats.dom);
 
 // start loop
 update();
@@ -62,6 +62,7 @@ function update() {
 
   // update peripherals
   stats.update()
+
   // window size
   renderer.setPixelRatio(window.devicePixelRatio * performanceConfig.resolution)
   renderer.setSize(window.innerWidth, window.innerHeight)

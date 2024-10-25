@@ -42,7 +42,7 @@ export class CameraDragControls {
     this.lastY = 0
 
     this.pitch = 0
-    this.yaw = 0
+    this.yaw = 0.36
     this.roll = -1
 
     this.viewHalfX = 0
@@ -77,17 +77,17 @@ export class CameraDragControls {
     if (this.observer.angularVelocity > 0)
       this.yaw += this.observer.angularVelocity * delta
 
-    if (this.mouseDragOn) {
-      this.yaw += this.lookSpeed * this.offsetX;
+    // if (this.mouseDragOn) {
+    //   this.yaw += this.lookSpeed * this.offsetX;
 
-      if (this.lookVertical) {
-        this.pitch += this.lookSpeed * this.offsetY;
-        this.pitch = Math.min(Math.PI / 2 - 0.01, Math.max(-Math.PI / 2 + 0.01, this.pitch))
+    //   if (this.lookVertical) {
+    //     this.pitch += this.lookSpeed * this.offsetY;
+    //     this.pitch = Math.min(Math.PI / 2 - 0.01, Math.max(-Math.PI / 2 + 0.01, this.pitch))
 
-      }
-      this.offsetX /= 2;
-      this.offsetY /= 2;
-    }
+    //   }
+    //   this.offsetX /= 2;
+    //   this.offsetY /= 2;
+    // }
 
     this.observer.setDirection(this.pitch, this.yaw);
   }
