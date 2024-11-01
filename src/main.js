@@ -33,7 +33,7 @@ const uniforms = {
 // create scene, 3d context, etc.. instances
 const renderer = createRenderer()
 const { composer, bloomPass, scene } = createScene(renderer);
-document.body.appendChild(renderer.domElement)
+document.getElementById('canvas-container').appendChild(renderer.domElement)
 
 // init graphics
 const textures = loadTextures();
