@@ -1,4 +1,3 @@
-
 import * as THREE from 'three';
 
 export class Observer extends THREE.PerspectiveCamera {
@@ -18,13 +17,14 @@ export class Observer extends THREE.PerspectiveCamera {
     this.moving = false
     this.timeDilation = false
     this.incline = -5 * Math.PI / 180
+    this.orbitSpeedMultiplier = 0.5;
   }
 
   // sets position, r vector, direction by supplying distance from center
   set distance(r) {
     this.r = r
     // w
-    this.maxAngularVelocity = 1 / Math.sqrt(2.0 * (r - 1.0)) / this.r
+    this.maxAngularVelocity = (1 / Math.sqrt(2.0 * (r - 1.0)) / this.r) * this.orbitSpeedMultiplier;
     // p
     this.position.normalize().multiplyScalar(r)
   }

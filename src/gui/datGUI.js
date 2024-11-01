@@ -69,7 +69,8 @@ export function createConfigGUI(changePerformanceQuality, saveScreenshot) {
       accretion_disk: true,
       use_disk_texture: true,
       doppler_shift: true,
-      beaming: true
+      beaming: true,
+      disk_rotation_speed: 0.15
     }
     // let effectFolder = gui.addFolder('Effects')
     // effectFolder.add(effectConfig, 'lorentz_transform')
@@ -77,6 +78,7 @@ export function createConfigGUI(changePerformanceQuality, saveScreenshot) {
     // effectFolder.add(effectConfig, 'beaming')
     // effectFolder.add(effectConfig, 'accretion_disk')
     // effectFolder.add(effectConfig, 'use_disk_texture')
+    // effectFolder.add(effectConfig, 'disk_rotation_speed', 0.0, 2.0)
     // effectFolder.open()
     return effectConfig;
   }

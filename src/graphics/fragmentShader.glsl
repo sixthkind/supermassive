@@ -22,6 +22,7 @@ uniform bool accretion_disk;
 uniform bool use_disk_texture;
 const float DISK_IN = 2.0;
 const float DISK_WIDTH = 4.0;
+uniform float disk_rotation_speed;
 
 uniform bool doppler_shift;
 uniform bool lorentz_transform;
@@ -185,7 +186,7 @@ void main()	{
           float phi = atan(intersection.x, intersection.z);
           
           vec3 disk_velocity = vec3(-intersection.x, 0.0, intersection.z)/sqrt(2.0*(r-1.0))/(r*r); 
-          phi -= time;//length(r);
+          phi -= time * disk_rotation_speed;
           phi = mod(phi , PI*2.0);
           float disk_gamma = 1.0/sqrt(1.0-dot(disk_velocity, disk_velocity));
           float disk_doppler_factor = disk_gamma*(1.0+dot(ray_dir/distance, disk_velocity)); // from source 
