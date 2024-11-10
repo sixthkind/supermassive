@@ -14,7 +14,7 @@ export function createConfigGUI(changePerformanceQuality, saveScreenshot) {
   function addPerformanceConfig() {
     const performanceConfig = {
       resolution: 1.0,
-      quality: 'medium'
+      quality: 'high'
     }
     // const perfFolder = gui.addFolder('Performance');
     // perfFolder.add(performanceConfig, 'resolution', [0.25, 0.5, 1.0, 2.0, 4.0]);
