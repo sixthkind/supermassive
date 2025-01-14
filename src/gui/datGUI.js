@@ -31,9 +31,9 @@ export function createConfigGUI(changePerformanceQuality, saveScreenshot) {
     //   threshold: 0.6
     // };    
     const bloomConfig = {
-      strength: 1.3,
+      strength: 0.9,
       radius: 0.7,
-      threshold: 0.7
+      threshold: 0.98
     };
 
     // const bloomFolder = gui.addFolder('Bloom')
