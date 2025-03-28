@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>quasarial _supermassive</title>
+    <title>sixthkind _supermassive</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,15 +41,39 @@
       }
 
       .title {
-        color: #7d8ecc;
-        text-shadow: 0 2px 24px rgba(125, 142, 204, 0.8);
+        color: #fff;
+        text-shadow: 0 2px 24px rgba(155, 125, 204, 0.8);
       }
 
       .link {
         text-align: right;
-        color: #7d8ecc;
-        text-shadow: 0 2px 24px rgba(125, 142, 204, 0.8);
+        /* color: #ed5188; */
+        color: #fff;
+        text-shadow: 0 2px 24px rgba(155, 125, 204, 0.8);
         text-decoration: none;
+        padding-right: 96px;
+        margin-top: -20px;
+        transition: text-shadow 0.3s ease;
+      }
+
+      .nexus:hover {
+        color: rgb(206, 179, 255) !important;
+      }
+
+      .atlas:hover {
+        color: rgb(255, 240, 179) !important;
+      }
+
+      .launchpad:hover {
+        color: rgb(179, 255, 232) !important;
+      }
+
+      .github:hover {
+        color: rgb(179, 231, 255) !important;
+      }
+
+      .monospace {
+        font-family: "Monaco", monospace;
       }
 
       section {
@@ -76,23 +100,21 @@
     <div class="content">
       <section>
         <div style="display: flex; align-items: center; gap: 1rem;">
-          <h1 class="title">quasarial</h1>
+          <img src="/assets/logo_white.png" alt="sixthkind logo" style="height: 50px; margin-right: -10px;">
+          <img src="/assets/icon.png" alt="sixthkind icon" style="width: 80px; height: 80px; transform: rotate(-180deg);">
         </div>
-        <a class="link" href="https://guide.quasarial.com">
-          _guide 
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Left page -->
-            <path d="M3 5C3 3.89543 3.89543 3 5 3H11C11.5523 3 12 3.44772 12 4V20C12 19.4477 11.5523 19 11 19H5C3.89543 19 3 18.1046 3 17V5Z" 
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <!-- Right page -->
-            <path d="M21 5C21 3.89543 20.1046 3 19 3H13C12.4477 3 12 3.44772 12 4V20C12 19.4477 12.4477 19 13 19H19C20.1046 19 21 18.1046 21 17V5Z" 
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <!-- Middle binding curve -->
-            <path d="M12 4V20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
+        <a class="link nexus" href="https://nexus.sixthkind.com">
+          _nexus
         </a>
-
-        <!-- <p>Darkness to make light</p> -->
+        <a class="link atlas" href="https://atlas.sixthkind.com" style="margin-top: -6px;">
+          _atlas
+        </a>
+        <a class="link launchpad" href="https://launchpad.sixthkind.com" style="margin-top: -6px;">
+          _launchpad
+        </a>
+        <a class="link github" href="https://github.com/sixthkind" style="margin-top: -6px;">
+          _github
+        </a>
       </section>
 
     </div>
