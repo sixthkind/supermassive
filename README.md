@@ -1,4 +1,13 @@
-## three-js-blackhole
+## sixthkind supermassive
+
+Sixthkind supermassive is a custom tweak on the [three-js-blackhole](https://github.com/vlwkaos/threejs-blackhole) project by [@vlwkaos](https://github.com/vlwkaos)  
+It adds custom textures, smoothing, and an enhanced camera and site overlay.  
+I use it for the main lander site at [sixthkind.com](https://sixthkind.com)
+
+---
+
+*(Original Readme)*
+### three-js-blackhole
 
 <p align="center">
    <img src="https://i.imgur.com/I6eMiFS.jpg" width="720px"/>

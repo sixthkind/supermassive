@@ -1,7 +1,7 @@
 {
-  "name": "threejs-blackhole",
-  "version": "1.0.0",
-  "description": "",
+  "name": "@sixthkind/supermassive",
+  "version": "1.0.1",
+  "description": "Sixthkind supermassive is a custom tweak on the three-js-blackhole project by @vlwkaos",
   "main": "index.js",
   "scripts": {
     "start": "npx vite dev",
