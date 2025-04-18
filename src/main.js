@@ -31,6 +31,12 @@ const uniforms = {
   disk_rotation_speed: { type: "f", value: 0.15 }
 }
 
+// Camera movement control variables
+const MAX_YAW_ANGLE = Math.PI / 10; // Maximum 90 degrees turn to the right
+const MAX_DISTANCE = 17; // Maximum distance from the camera to the object
+let currentYaw = 0;
+let currentDistance = 0;
+
 // create scene, 3d context, etc.. instances
 const renderer = createRenderer()
 const { composer, bloomPass, scene } = createScene(renderer);
@@ -72,6 +78,20 @@ function update() {
   // update renderer
   observer.update(delta)
   cameraControl.update(delta)
+
+  // Gradually increase camera distance to zoom out
+  if (currentDistance < MAX_DISTANCE) {
+    cameraConfig.distance += delta * 0.2; // Increase distance by 0.5 units per second
+    currentDistance += delta * 0.2;
+  }
+  
+  // Gradually turn camera to the right until max angle is reached
+  if (currentYaw < MAX_YAW_ANGLE) {
+    // const yawChange = delta * 0.01;
+    const yawChange = delta * 0.005;
+    currentYaw += yawChange;
+    cameraControl.yaw -= yawChange;
+  }
 
   // update shader variables
   updateUniforms()
