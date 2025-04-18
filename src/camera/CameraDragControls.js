@@ -33,8 +33,12 @@ export class CameraDragControls {
 
     this.enabled = true;
 
-    this.lookSpeed = 0.005;
+    this.lookSpeed = 0.00001;
     this.lookVertical = true;
+    this.mouseSensitivity = 0.05;
+
+    this.maxPitch = Math.PI / 16;
+    this.maxYaw = Math.PI / 12;
 
     this.offsetX = 0
     this.offsetY = 0
@@ -47,7 +51,6 @@ export class CameraDragControls {
 
     this.viewHalfX = 0
     this.viewHalfY = 0
-
 
     if (isHTMLElement(this.domElement)) {
       this.domElement.setAttribute('tabindex', '-1');
@@ -71,23 +74,19 @@ export class CameraDragControls {
   };
 
   update(delta) {
-
     if (this.enabled === false) return;
 
-    if (this.observer.angularVelocity > 0)
-      this.yaw += this.observer.angularVelocity * delta
+    // Handle orbital movement
+    if (this.observer.angularVelocity > 0) {
+      this.yaw += this.observer.angularVelocity * delta;
+    }
 
-    // if (this.mouseDragOn) {
-    //   this.yaw += this.lookSpeed * this.offsetX;
-
-    //   if (this.lookVertical) {
-    //     this.pitch += this.lookSpeed * this.offsetY;
-    //     this.pitch = Math.min(Math.PI / 2 - 0.01, Math.max(-Math.PI / 2 + 0.01, this.pitch))
-
-    //   }
-    //   this.offsetX /= 2;
-    //   this.offsetY /= 2;
-    // }
+    if (this.offsetY !== 0) {
+      // Only apply pitch control
+      const newPitch = this.pitch + this.lookSpeed * this.offsetY * this.mouseSensitivity;
+      this.pitch = Math.max(-this.maxPitch, Math.min(this.maxPitch, newPitch));
+      this.offsetY *= 0.95;
+    }
 
     this.observer.setDirection(this.pitch, this.yaw);
   }
@@ -99,23 +98,17 @@ export class CameraDragControls {
     });
 
     this.domElement.addEventListener('mousemove', (event) => {
-
-      // calculate moved position
-      if (this.mouseDragOn) {
-        let newX, newY;
-        if (!isHTMLElement(this.domElement)) {
-          newX = event.pageX - this.viewHalfX;
-          newY = event.pageY - this.viewHalfY;
-        } else {
-          newX = event.pageX - this.domElement.offsetLeft - this.viewHalfX;
-          newY = event.pageY - this.domElement.offsetTop - this.viewHalfY;
-        }
-
-        this.offsetX = newX - this.lastX;
-        this.offsetY = newY - this.lastY;
-        this.lastX = newX;
-        this.lastY = newY;
+      let newX, newY;
+      if (!isHTMLElement(this.domElement)) {
+        newX = event.pageX - this.viewHalfX;
+        newY = event.pageY - this.viewHalfY;
+      } else {
+        newX = event.pageX - this.domElement.offsetLeft - this.viewHalfX;
+        newY = event.pageY - this.domElement.offsetTop - this.viewHalfY;
       }
+
+      this.offsetX = newX;
+      this.offsetY = newY;
     });
 
     this.domElement.addEventListener('mousedown', event => {
@@ -125,7 +118,6 @@ export class CameraDragControls {
       event.preventDefault();
       event.stopPropagation();
       this.mouseDragOn = true;
-      // remember current mouse position
       if (!isHTMLElement(this.domElement)) {
         this.lastX = event.pageX - this.viewHalfX;
         this.lastY = event.pageY - this.viewHalfY;
