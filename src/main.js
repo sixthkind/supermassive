@@ -33,7 +33,7 @@ const uniforms = {
 
 // Camera movement control variables
 const MAX_YAW_ANGLE = Math.PI / 10; // Maximum 90 degrees turn to the right
-const MAX_DISTANCE = 17; // Maximum distance from the camera to the object
+const MAX_DISTANCE = 12; // Maximum distance from the camera to the object
 let currentYaw = 0;
 let currentDistance = 0;
 
